@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef2f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('https://img.freepik.com/vetores-gratis/fundo-de-gradiente-de-linhas-azuis-dinamicas_23-2148995756.jpg?ga=GA1.1.647130327.1742095292&semt=ais_hybrid');
+    background-repeat: repeat;
+    background-size: cover;
+    animation: fadeIn 1s ease-in-out;
+
+}
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 450px;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+    backdrop-filter: blur(10px);
+    animation: slideUp 0.8s ease-in-out;
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2::before {
+    content: '\1F9B7'; /* Ícone de dente */
+    font-size: 28px;
+    margin-right: 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: left;
+    color: #34495e;
+}
+input {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    border: 2px solid #bdc3c7;
+    border-radius: 12px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+}
+
+/* Estilização do seletor de data */
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    color: #2c3e50;
+    padding-left: 15px;
+    cursor: text;
+    border-radius: 10px;
+    position: relative;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Melhorando o estilo do seletor de data no Chrome */
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+
+
+input[type="date"]:hover, input[type="date"]:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+}
+
+
+button {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    margin-top: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+button:hover {
+    background-color: #2980b9;
+}
+.error {
+    color: red;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
