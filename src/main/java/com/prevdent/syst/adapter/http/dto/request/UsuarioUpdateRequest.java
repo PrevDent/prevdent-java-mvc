@@ -13,7 +13,7 @@ import lombok.Setter;
 public class UsuarioUpdateRequest {
 
     @JsonProperty("nome")
-    /*@NotNull
+    /*
     @NotEmpty*/
     private String nome;
 
