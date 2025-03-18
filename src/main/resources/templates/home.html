@@ -2,10 +2,40 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Lista de Consultas</title>
     <link rel="stylesheet" th:href="@{/stylehome.css}">
 </head>
 <body>
-<h2>Bem-vindo à Home!</h2>
+<div class="container  mt-4">
+    <h2>Lista de Consultas</h2>
+        <div class="table-responsive">
+            <table border="1" class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Paciente</th>
+                        <th>CPF Paciente</th>
+                        <th>Dentista</th>
+                        <th>CRO</th>
+                        <th>Data</th>
+                        <th>Tipo de Tratamento</th>
+                        <th>Diagnóstico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="consulta : ${consultas}">
+                        <td th:text="${consulta.idConsulta}"></td>
+                        <td th:text="${consulta.paciente.nome}"></td>
+                        <td th:text="${consulta.paciente.cpf}"></td>
+                        <td th:text="${consulta.dentista.nome}"></td>
+                        <td th:text="${consulta.dentista.documento}"></td>
+                        <td th:text="${consulta.data}"></td>
+                        <td th:text="${consulta.tipoTratamento}"></td>
+                        <td th:text="${consulta.diagnostico.descricao}"></td>
+                    </tr>
+                </tbody>
+            </table>
+         </div>
+</div>
 </body>
 </html>

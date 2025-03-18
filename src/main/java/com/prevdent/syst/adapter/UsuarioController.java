@@ -4,30 +4,45 @@ package com.prevdent.syst.adapter;
 import com.prevdent.syst.adapter.http.dto.mapper.UsuarioDtoMapper;
 import com.prevdent.syst.adapter.http.dto.request.UsuarioCreateRequest;
 import com.prevdent.syst.adapter.http.dto.request.UsuarioLoginRequest;
+import com.prevdent.syst.adapter.repository.PrevDentFeignClient;
+
+import com.prevdent.syst.domain.model.Consulta;
 import com.prevdent.syst.domain.model.Usuario;
 import com.prevdent.syst.usecase.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
 
-
+    @Autowired
+    private PrevDentFeignClient prevDentFeignClient;
 
     @Autowired
     private UsuarioService usuarioService;
 
     @Autowired
     private UsuarioDtoMapper usuarioDtoMapper;
+
+
+    @GetMapping("/")
+    public String redirectToCadastro() {
+        return "redirect:/usuario/cadastrar";
+    }
+
 
 
     @GetMapping("/cadastro")
@@ -76,18 +91,23 @@ public class UsuarioController {
         try {
             String token = usuarioService.validarLogin(usuarioLoginRequest.getCpf(), usuarioLoginRequest.getSenha());
             modelAndView.addObject("token", token);
-            modelAndView.setViewName("home"); // Nome da página para onde redirecionar após login bem-sucedido
+            modelAndView.setViewName("redirect:/usuario/home");
         } catch (Exception e) {
             modelAndView.addObject("erro", "Credenciais inválidas");
-            modelAndView.setViewName("login"); // Retorna para a página de login com a mensagem de erro
+            modelAndView.setViewName("login");
         }
 
         return modelAndView;
     }
 
+
     @GetMapping("/home")
     public ModelAndView home() {
-        return new ModelAndView("home");
+        List<Consulta> consultas = prevDentFeignClient.listarConsultas(); // Feign já retorna a lista diretamente
+
+        ModelAndView mv = new ModelAndView("home");
+        mv.addObject("consultas", consultas);
+        return mv;
     }
 
 }
