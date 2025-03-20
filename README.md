@@ -48,9 +48,6 @@ Para executar este projeto corretamente, é necessário rodá-lo em conjunto com
 
 🔗 **Link do GitHub:** [PrevDent](https://github.com/PrevDent/prevdentjava)  
 
-Clone o repositório da aplicação principal:  
-
-
 2️⃣ Configuração das Requisições
 Para visualizar a listagem de pacientes na página Home, você deve realizar requisições na aplicação [PrevDent](https://github.com/PrevDent/prevdentjava).
 
