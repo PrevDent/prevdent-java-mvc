@@ -1,168 +1,65 @@
-🦷 PrevDent - Sistema de Gestão Odontológica
+# 🦷 PrevDent - Sistema de Gestão Odontológica
 
-Sistema desenvolvido em Spring Boot com Thymeleaf para gerenciar consultas odontológicas, pacientes e dentistas.
+# Aluno	RM
 
-📌 Sobre o Projeto
+#### Keven Ike Pereira da Silva	553215
 
-O PrevDent é um sistema web que permite o gerenciamento de consultas odontológicas, facilitando o cadastro de pacientes, dentistas e diagnósticos. Ele utiliza Spring Boot como backend e Thymeleaf para renderizar as páginas no frontend.
+#### Vitor Cruz dos Santos  553621
 
-O sistema possibilita:
-✔ Cadastro e login de usuários✔ Agendamento e listagem de consultas✔ Gestão de dentistas e pacientes✔ Integração segura com JWT para autenticação✔ Interface moderna e responsiva
+#### José Ribeiro dos Santos Neto 553844
 
-🛠 Tecnologias Utilizadas
+Sistema desenvolvido em **Spring Boot** com **Thymeleaf** para gerenciar consultas odontológicas, pacientes e dentistas.
 
-O projeto foi desenvolvido com as seguintes tecnologias:
+## 📌 Sobre o Projeto  
+O **PrevDent** é um sistema web que facilita o gerenciamento de consultas odontológicas, permitindo o cadastro de pacientes, dentistas e diagnósticos. O sistema utiliza **Spring Boot** no backend e **Thymeleaf** no frontend para uma experiência dinâmica e eficiente.
 
-Back-End:
+### 🚀 Principais Funcionalidades  
+✅ **Cadastro e login de usuários**  
+✅ **Agendamento e listagem de consultas**  
+✅ **Gestão de dentistas e pacientes**  
+✅ **Integração segura com JWT para autenticação**  
+✅ **Interface moderna e responsiva**  
 
-Java 17
+---
 
-Spring Boot 3.x
+## 🛠 Tecnologias Utilizadas
 
-Spring MVC
+### 🔹 Back-End  
+- Java 17  
+- Spring Boot 3.x  
+- Spring MVC  
+- Spring Security (JWT)  
+- Spring Data JPA  
+- Thymeleaf  
 
-Spring Security (JWT)
+### 🔹 Front-End  
+- HTML5 + Thymeleaf  
+- CSS3 
 
-Spring Data JPA
+### 🔹 Infraestrutura  
+- OpenFeign (para integração com APIs externas)  
 
-Thymeleaf
+---
 
-Hibernate
+## 🎯 Como Rodar o Projeto  
 
-PostgreSQL/MySQL
+### 1️⃣ Clone o repositório principal  
+Para executar este projeto corretamente, é necessário rodá-lo em conjunto com a **aplicação PrevDent**.  
 
-Front-End:
+🔗 **Link do GitHub:** [PrevDent](https://github.com/PrevDent/prevdentjava)  
 
-HTML5 + Thymeleaf
+Clone o repositório da aplicação principal:  
 
-CSS3 (Bootstrap para estilização)
 
-JavaScript (AJAX para algumas interações)
+2️⃣ Configuração das Requisições
+Para visualizar a listagem de pacientes na página Home, você deve realizar requisições na aplicação principal.
 
-Infraestrutura:
+O repositório já contém um arquivo atualizado com todas as requisições necessárias para uso no Postman.
 
-Docker (para o banco de dados)
+3️⃣ Executando a Aplicação Spring MVC
+Inicie a aplicação localmente e utilize as seguintes URLs para acessar:
 
-OpenFeign (consumo de APIs externas)
+Cadastro de Usuário: http://localhost:8081/usuario/cadastro
 
-Flyway (migração de banco de dados)
+Login de Usuário: http://localhost:8081/usuario/login
 
-🎯 Funcionalidades
-
-🔹 Autenticação & Segurança
-
-Cadastro de usuários com senha criptografada
-
-Login seguro utilizando JWT
-
-Middleware para proteger rotas autenticadas
-
-🔹 Gestão de Consultas
-
-Agendamento de novas consultas
-
-Listagem de consultas com informações detalhadas
-
-Atualização e remoção de consultas
-
-🔹 Gerenciamento de Pacientes & Dentistas
-
-Cadastro de pacientes com CPF, data de nascimento e histórico
-
-Cadastro de dentistas com especializações
-
-Integração de diagnósticos para cada consulta
-
-🚀 Como Rodar o Projeto
-
-1️⃣ Clonar o repositório
-
-2️⃣ Configurar o Banco de Dados
-
-Se estiver usando Docker, inicie o banco de dados:
-
-Caso contrário, crie um banco no PostgreSQL/MySQL e configure no application.properties:
-
-3️⃣ Executar a Aplicação
-
-Acesse o sistema em:➡ http://localhost:8080
-
-📌 Rotas da Aplicação
-
-🔹 Páginas Web (Thymeleaf)
-
-Rota
-
-Descrição
-
-/usuario/cadastrar
-
-Tela de Cadastro
-
-/usuario/login
-
-Tela de Login
-
-/usuario/home
-
-Página Inicial
-
-🔹 Endpoints da API (se necessário)
-
-Método
-
-Rota
-
-Descrição
-
-POST
-
-/consulta/cadastrar
-
-Cadastrar Consulta
-
-GET
-
-/consulta
-
-Listar Consultas
-
-GET
-
-/consulta/{id}
-
-Buscar Consulta
-
-PATCH
-
-/consulta/{id}
-
-Atualizar Consulta
-
-DELETE
-
-/consulta/{id}
-
-Excluir Consulta
-
-🔐 Autenticação com JWT
-
-Após o login, um token JWT é gerado e enviado no cabeçalho das requisições autenticadas.Para testar no Postman ou Insomnia, adicione o token no Header:
-
-🖼 Telas do Sistema
-
-📌 Cadastro de Usuário
-
-📌 Lista de Consultas
-
-📌 Melhorias Futuras
-
-📌 Dashboard com estatísticas de consultas e pacientes
-
-📌 Implementação de WebSockets para notificações em tempo real
-
-📌 Upload de arquivos para anexar exames
-
-👨‍💻 Desenvolvedor
-
-Keven Ike Pereira da Silva🚀 Desenvolvedor de Software | Estudante de ADS na FIAP📌 LinkedIn | 📧 contato: 11932755267
