@@ -17,6 +17,9 @@
         <input type="password" name="senha" required>
     </div>
     <button type="submit">Entrar</button>
+    <p style="text-align: center; margin-top: 10px;">
+        Ainda não tem uma conta? <a th:href="@{/usuario/cadastro}" style="color: #007bff; text-decoration: none; font-weight: bold;">Cadastre-se</a>
+    </p>
 </form>
 <p th:if="${erro}" th:text="${erro}" style="color: red;"></p>
 </div>

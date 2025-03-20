@@ -103,7 +103,7 @@ public class UsuarioController {
 
     @GetMapping("/home")
     public ModelAndView home() {
-        List<Consulta> consultas = prevDentFeignClient.listarConsultas(); // Feign já retorna a lista diretamente
+        List<Consulta> consultas = prevDentFeignClient.listarConsultas();
 
         ModelAndView mv = new ModelAndView("home");
         mv.addObject("consultas", consultas);
