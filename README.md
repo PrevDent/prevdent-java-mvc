@@ -8,6 +8,8 @@
 
 #### José Ribeiro dos Santos Neto 553844
 
+Link do Video [video](https://youtu.be/BfRq7Z8UPuY)
+
 Sistema desenvolvido em **Spring Boot** com **Thymeleaf** para gerenciar consultas odontológicas, pacientes e dentistas.
 
 ## 📌 Sobre o Projeto  
