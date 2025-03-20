@@ -12,7 +12,6 @@
             <table border="1" class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Paciente</th>
                         <th>CPF Paciente</th>
                         <th>Dentista</th>
@@ -24,7 +23,6 @@
                 </thead>
                 <tbody>
                     <tr th:each="consulta : ${consultas}">
-                        <td th:text="${consulta.idConsulta}"></td>
                         <td th:text="${consulta.paciente.nome}"></td>
                         <td th:text="${consulta.paciente.cpf}"></td>
                         <td th:text="${consulta.dentista.nome}"></td>
