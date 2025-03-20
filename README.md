@@ -26,7 +26,7 @@ O **PrevDent** é um sistema web que facilita o gerenciamento de consultas odont
 
 ### 🔹 Back-End  
 - Java 17  
-- Spring Boot 3.x  
+- Spring Boot 3.3.0
 - Spring MVC  
 - Spring Security (JWT)  
 - Spring Data JPA  
