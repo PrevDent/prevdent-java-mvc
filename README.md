@@ -52,7 +52,7 @@ Clone o repositório da aplicação principal:
 
 
 2️⃣ Configuração das Requisições
-Para visualizar a listagem de pacientes na página Home, você deve realizar requisições na aplicação principal.
+Para visualizar a listagem de pacientes na página Home, você deve realizar requisições na aplicação [PrevDent](https://github.com/PrevDent/prevdentjava).
 
 O repositório já contém um arquivo atualizado com todas as requisições necessárias para uso no Postman.
 
