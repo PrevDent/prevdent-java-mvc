@@ -40,7 +40,7 @@ public class UsuarioController {
 
     @GetMapping("/")
     public String redirectToCadastro() {
-        return "redirect:/usuario/cadastrar";
+        return "redirect:/usuario/cadastro";
     }
 
 
