@@ -77,6 +77,7 @@ Login de Usuário: http://localhost:8081/usuario/login
 ##### 9 -> Ao finalizar o deploy, apenas clicar na url e abrir no browser
 
 O back-end está neste link https://prevdent-java.azurewebsites.net/
+
 O front-end está nesse link: https://prevdent-mvc.azurewebsites.net/usuario/cadastro
 
 Para verificar requisições e itens no banco, usar as colections do postman que se encontram no projeto.
