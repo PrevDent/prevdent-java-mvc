@@ -10,17 +10,13 @@ import com.prevdent.syst.domain.model.Consulta;
 import com.prevdent.syst.domain.model.Usuario;
 import com.prevdent.syst.usecase.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Arrays;
 import java.util.List;
 
 
