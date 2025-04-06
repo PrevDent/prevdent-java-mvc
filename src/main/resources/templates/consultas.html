@@ -1,0 +1,38 @@
+<!-- templates/consultas.html -->
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Consultas</title>
+    <link rel="stylesheet" th:href="@{/styleconsulta.css}">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Lista de Consultas</h2>
+    <div class="table-responsive">
+        <table border="1" class="table">
+            <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>CPF Paciente</th>
+                <th>Dentista</th>
+                <th>CRO</th>
+                <th>Data</th>
+                <th>Tipo de Tratamento</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="consulta : ${consultas}">
+                <td th:text="${consulta.paciente.nome}"></td>
+                <td th:text="${consulta.paciente.cpf}"></td>
+                <td th:text="${consulta.dentista.nome}"></td>
+                <td th:text="${consulta.dentista.documento}"></td>
+                <td th:text="${consulta.data}"></td>
+                <td th:text="${consulta.tipoTratamento}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
