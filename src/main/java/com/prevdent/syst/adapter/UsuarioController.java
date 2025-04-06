@@ -13,10 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -130,11 +127,14 @@ public class UsuarioController {
     public ModelAndView home(HttpSession session) {
 
         if (session.getAttribute("token") == null) {
+            log.warn("Tentativa de acesso à home sem autenticação");
 
             return new ModelAndView("redirect:/usuario/login");
 
         }
+        log.info("Acessando a home do usuário com CPF: {}", session.getAttribute("cpf"));
         ModelAndView mv = new ModelAndView("home");
+
 
         return mv;
     }
@@ -142,6 +142,8 @@ public class UsuarioController {
     @GetMapping("/consultas")
     public ModelAndView telaConsultas() {
         List<Consulta> consultas = prevDentFeignClient.listarConsultas();
+
+        log.info("Consultas retornadas com sucesso: {}", consultas);
 
         ModelAndView mv = new ModelAndView("consultas");
 
@@ -157,6 +159,5 @@ public class UsuarioController {
 
         return "redirect:/usuario/login";
     }
-
 
 }
