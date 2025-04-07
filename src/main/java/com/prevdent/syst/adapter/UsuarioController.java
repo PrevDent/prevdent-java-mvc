@@ -9,6 +9,7 @@ import com.prevdent.syst.adapter.repository.PrevDentFeignClient;
 import com.prevdent.syst.domain.model.Consulta;
 import com.prevdent.syst.domain.model.Usuario;
 import com.prevdent.syst.usecase.service.UsuarioService;
+import datadog.trace.api.Trace;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,7 @@ public class UsuarioController {
         return modelAndView;
     }
 
-
+    @Trace(operationName = "usuario.cadastrar")
     @PostMapping("/cadastrar")
     public ModelAndView cadastrarUsuario(@ModelAttribute UsuarioCreateRequest usuarioDto) {
         ModelAndView modelAndView = new ModelAndView();
@@ -100,7 +101,7 @@ public class UsuarioController {
 
 
 
-
+    @Trace(operationName = "usuario.login")
     @PostMapping("/login")
     public ModelAndView login(@ModelAttribute UsuarioLoginRequest usuarioLoginRequest, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
@@ -125,7 +126,7 @@ public class UsuarioController {
         return modelAndView;
     }
 
-
+    @Trace(operationName = "usuario.home")
     @GetMapping("/home")
     public ModelAndView home(HttpSession session) {
 
@@ -139,6 +140,7 @@ public class UsuarioController {
         return mv;
     }
 
+    @Trace(operationName = "usuario.consultas")
     @GetMapping("/consultas")
     public ModelAndView telaConsultas() {
         List<Consulta> consultas = prevDentFeignClient.listarConsultas();

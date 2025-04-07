@@ -4,6 +4,8 @@ spring:
     username: "RM553621"
     password: "051102"
     driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      maximum-pool-size: 2
   jpa:
     hibernate:
       ddl-auto: create
@@ -20,3 +22,34 @@ api:
 
 server:
   port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+  metrics:
+    export:
+      datadog:
+        enabled: true
+        api-key: ${DD_API_KEY}
+        step: 30s
+
+datadog:
+  api-key: ${DD_API_KEY}
+  site: us5.datadoghq.com
+  tracing:
+    enabled: true
+  logs:
+    enabled: true
+    container-logs:
+      enabled: true
+  apm:
+    enabled: true
+
+dd:
+  service: prevdent-java-mvc
+  env: dev
+  version: 1.0.0

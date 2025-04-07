@@ -26,3 +26,34 @@ api:
 
 server:
   port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+  metrics:
+    export:
+      datadog:
+        enabled: true
+        api-key: ${DD_API_KEY}
+        step: 30s
+
+datadog:
+  api-key: ${DD_API_KEY}
+  site: us5.datadoghq.com
+  tracing:
+    enabled: true
+  logs:
+    enabled: true
+    container-logs:
+      enabled: true
+  apm:
+    enabled: true
+
+dd:
+  service: prevdent-java-mvc
+  env: dev
+  version: 1.0.0
