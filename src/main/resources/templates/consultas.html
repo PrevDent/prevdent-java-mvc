@@ -7,6 +7,23 @@
     <link rel="stylesheet" th:href="@{/styleconsulta.css}">
 </head>
 <body>
+
+<div class="navbar">
+
+    <h1>
+        <a th:href="@{/usuario/home}" style="color: #1976d2; text-decoration: none;">
+            PrevDent
+        </a>
+    </h1>
+
+    <div class="menu-links">
+        <a class="btn" th:href="@{/usuario/consultas}">📋 Ver Consultas</a>
+        <a class="btn" th:href="@{/usuario/consulta/formulario}">➕ Cadastrar Consulta</a>
+        <a class="btn" th:href="@{/usuario/logout}">Sair</a>
+    </div>
+</div>
+
+
 <div class="container mt-4">
     <h2>Lista de Consultas</h2>
     <div class="table-responsive">

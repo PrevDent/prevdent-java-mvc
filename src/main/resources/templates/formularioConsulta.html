@@ -7,6 +7,22 @@
 
 </head>
 <body>
+<div class="navbar">
+
+    <h1>
+        <a th:href="@{/usuario/home}" style="color: #1976d2; text-decoration: none;">
+            PrevDent
+        </a>
+    </h1>
+
+    <div class="menu-links">
+        <a class="btn" th:href="@{/usuario/consultas}">📋 Ver Consultas</a>
+        <a class="btn" th:href="@{/usuario/consulta/formulario}">➕ Cadastrar Consulta</a>
+        <a class="btn" th:href="@{/usuario/logout}">Sair</a>
+    </div>
+</div>
+
+
   <form th:action="@{/usuario/consulta/salvar}" th:object="${consulta}" method="post">
     <label>CPF Paciente:</label>
     <input type="text" th:field="*{paciente.cpf}"/>
@@ -15,7 +31,9 @@
     <input type="text" th:field="*{dentista.documento}"/>
 
     <label>Data:</label>
-    <input type="datetime-local" th:field="*{data}" step="1"/>
+     <div class="input-data-wrapper">
+         <input type="datetime-local" th:field="*{data}" step="1"/>
+     </div>
 
     <label>Tipo Tratamento:</label>
     <input type="text" th:field="*{tipoTratamento}"/>

@@ -9,7 +9,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.seuprojeto" level="DEBUG"/>
+    <logger name="com.prevdent.syst" level="DEBUG"/>
     <logger name="org.springframework" level="INFO"/>
     <logger name="org.hibernate" level="WARN"/>
 
