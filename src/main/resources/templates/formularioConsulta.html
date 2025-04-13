@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>formulario</title>
+    <link rel="stylesheet" th:href="@{/formulario.css}">
+
+</head>
+<body>
+  <form th:action="@{/usuario/consulta/salvar}" th:object="${consulta}" method="post">
+    <label>CPF Paciente:</label>
+    <input type="text" th:field="*{paciente.cpf}"/>
+
+    <label>Documento Dentista:</label>
+    <input type="text" th:field="*{dentista.documento}"/>
+
+    <label>Data:</label>
+    <input type="datetime-local" th:field="*{data}" step="1"/>
+
+    <label>Tipo Tratamento:</label>
+    <input type="text" th:field="*{tipoTratamento}"/>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+</body>
+</html>
