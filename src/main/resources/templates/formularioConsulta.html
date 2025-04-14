@@ -22,8 +22,11 @@
     </div>
 </div>
 
+<div th:if="${mensagemErro}" style="color: red; margin-bottom: 10px;">
+    <p th:text="${mensagemErro}"></p>
+</div>
 
-  <form th:action="@{/usuario/consulta/salvar}" th:object="${consulta}" method="post">
+<form th:action="@{/usuario/consulta/salvar}" th:object="${consulta}" method="post">
     <label>CPF Paciente:</label>
     <input type="text" th:field="*{paciente.cpf}"/>
 
@@ -31,14 +34,14 @@
     <input type="text" th:field="*{dentista.documento}"/>
 
     <label>Data:</label>
-     <div class="input-data-wrapper">
-         <input type="datetime-local" th:field="*{data}" step="1"/>
-     </div>
+    <div class="input-data-wrapper">
+        <input type="datetime-local" th:field="*{data}" step="1"/>
+    </div>
 
     <label>Tipo Tratamento:</label>
     <input type="text" th:field="*{tipoTratamento}"/>
 
     <button type="submit">Cadastrar</button>
-  </form>
+</form>
 </body>
 </html>
