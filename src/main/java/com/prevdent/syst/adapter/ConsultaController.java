@@ -30,7 +30,7 @@ public class ConsultaController {
     }
 
     @PostMapping("/salvar")
-    public String salvarConsulta(@ModelAttribute ConsultaPostRequest consulta) {
+    public String salvarConsulta(@ModelAttribute ConsultaPostRequest consulta, Model model) {
         try {
             log.info("Iniciando o cadastro da consulta: {}", consulta);
 
@@ -43,7 +43,10 @@ public class ConsultaController {
 
             log.error("Erro ao cadastrar a consulta: {}", consulta, e);
 
-            return "erroCadastroConsulta";
+            model.addAttribute("mensagemErro", "Ocorreu um erro ao tentar cadastrar a consulta.");
+            model.addAttribute("consulta", consulta);
+
+            return "formularioConsulta";
         }
     }
 }
