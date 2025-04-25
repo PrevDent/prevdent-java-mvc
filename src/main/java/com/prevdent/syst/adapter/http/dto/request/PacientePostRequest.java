@@ -5,10 +5,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class PacientePostRequest {
+public class PacientePostRequest implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @JsonProperty("id_paciente")
     private String idPaciente;

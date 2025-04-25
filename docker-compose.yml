@@ -1,0 +1,17 @@
+services:
+  produtora:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: prevdent-produtora
+    ports:
+      - "8081:8081"
+    networks:
+      - prevdent-net
+    environment:
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - FEIGN_CORE_URL=http://prevdent-core:8080
+
+networks:
+  prevdent-net:
+    external: true
