@@ -3,7 +3,9 @@ package com.prevdent.syst.adapter;
 import com.prevdent.syst.adapter.http.dto.request.ConsultaPostRequest;
 import com.prevdent.syst.adapter.repository.PrevDentFeignClient;
 import com.prevdent.syst.domain.model.Consulta;
+import com.prevdent.syst.infra.config.RabbitMQConfig;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,9 @@ public class ConsultaController {
 
     @Autowired
     private PrevDentFeignClient prevDentFeignClient;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
 
     @GetMapping("/formulario")
@@ -38,12 +43,18 @@ public class ConsultaController {
 
             log.info("Consulta cadastrada com sucesso: {}", consulta);
 
+            // Enviar mensagem para a fila RabbitMQ
+            rabbitTemplate.convertAndSend(RabbitMQConfig.QUEUE_CADASTRO_CONSULTA, consulta);
+
+            log.info("Mensagem enviada para a fila RabbitMQ: {}", consulta);
+
             return "redirect:/usuario/consultas";
         } catch (Exception e) {
 
             log.error("Erro ao cadastrar a consulta: {}", consulta, e);
 
             model.addAttribute("mensagemErro", "Ocorreu um erro ao tentar cadastrar a consulta.");
+
             model.addAttribute("consulta", consulta);
 
             return "formularioConsulta";

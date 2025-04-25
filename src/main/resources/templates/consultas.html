@@ -44,7 +44,7 @@
                 <td th:text="${consulta.paciente.cpf}"></td>
                 <td th:text="${consulta.dentista.nome}"></td>
                 <td th:text="${consulta.dentista.documento}"></td>
-                <td th:text="${consulta.data}"></td>
+                <td th:text="${#dates.format(consulta.data, 'dd/MM/yyyy HH:mm')}"></td>
                 <td th:text="${consulta.tipoTratamento}"></td>
             </tr>
             </tbody>

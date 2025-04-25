@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class DentistaPostRequest {
+public class DentistaPostRequest implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @JsonProperty("id_dentista")
     private String idDentista;
