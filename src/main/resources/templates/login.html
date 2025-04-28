@@ -6,19 +6,20 @@
 </head>
 <body>
 <div class="container">
-<h2>Login</h2>
+<h2 th:text="#{titulo.login}">Login</h2>
 <form action="/usuario/login" method="post">
     <div>
-        <label>CPF:</label>
+        <label th:text="#{formulario.cpf}">CPF:</label>
         <input type="text" name="cpf" required>
     </div>
     <div>
-        <label>Senha:</label>
+        <label th:text="#{formulario.senha}">Senha:</label>
         <input type="password" name="senha" required>
     </div>
-    <button type="submit">Entrar</button>
+    <button type="submit" th:text="#{formulario.login}">Entrar</button>
     <p style="text-align: center; margin-top: 10px;">
-        Ainda não tem uma conta? <a th:href="@{/usuario/cadastro}" style="color: #007bff; text-decoration: none; font-weight: bold;">Cadastre-se</a>
+        <span th:text="#{formulario.cadastroTexto}">Ainda não tem uma conta?</span>
+        <a th:href="@{/usuario/cadastro}" style="color: #007bff; text-decoration: none; font-weight: bold;" th:text="#{fomulario.rigistro}">Cadastre-se</a>
     </p>
 </form>
 <p th:if="${erro}" th:text="${erro}" style="color: red;"></p>

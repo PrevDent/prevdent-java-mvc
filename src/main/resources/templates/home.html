@@ -10,14 +10,14 @@
 <!-- Navbar -->
 <div class="navbar">
     <h1>PrevDent</h1>
-    <a class="btn" th:href="@{/usuario/logout}">Sair</a>
+    <a class="btn" th:href="@{/usuario/logout}" th:text="#{menu.sair}">Sair</a>
 </div>
 
 <!-- Menu Central -->
 <div class="menu">
-    <h2>Bem-vindo(a)</h2>
-    <a class="btn" th:href="@{/usuario/consultas}">📋 Ver Consultas</a>
-    <a class="btn" th:href="@{/usuario/consulta/formulario}">➕ Cadastrar Consulta</a>
+    <h2 th:text="#{titulo.home}">Bem-vindo(a)</h2>
+    <a class="btn" th:href="@{/usuario/consultas}" th:text="#{menu.verConsultas}">Ver Consultas</a>
+    <a class="btn" th:href="@{/usuario/consulta/formulario}" th:text="#{menu.cadastrarConsulta}">Cadastrar Consulta</a>
 </div>
 
 </body>

@@ -16,9 +16,9 @@
     </h1>
 
     <div class="menu-links">
-        <a class="btn" th:href="@{/usuario/consultas}">📋 Ver Consultas</a>
-        <a class="btn" th:href="@{/usuario/consulta/formulario}">➕ Cadastrar Consulta</a>
-        <a class="btn" th:href="@{/usuario/logout}">Sair</a>
+        <a class="btn" th:href="@{/usuario/consultas}" th:text="#{menu.verConsultas}">📋 Ver Consultas</a>
+        <a class="btn" th:href="@{/usuario/consulta/formulario}" th:text="#{menu.cadastrarConsulta}">➕ Cadastrar Consulta</a>
+        <a class="btn" th:href="@{/usuario/logout}" th:text="#{menu.sair}">Sair</a>
     </div>
 </div>
 
@@ -27,21 +27,21 @@
 </div>
 
 <form th:action="@{/usuario/consulta/salvar}" th:object="${consulta}" method="post">
-    <label>CPF Paciente:</label>
+    <label th:text="#{formulario.cpfPaciente}">CPF Paciente:</label>
     <input type="text" th:field="*{paciente.cpf}"/>
 
-    <label>Documento Dentista:</label>
+    <label th:text="#{formulario.documentoDentista}">Documento Dentista:</label>
     <input type="text" th:field="*{dentista.documento}"/>
 
-    <label>Data:</label>
+    <label th:text="#{formulario.dataConsulta}">Data:</label>
     <div class="input-data-wrapper">
         <input type="datetime-local" th:field="*{data}" step="1"/>
     </div>
 
-    <label>Tipo Tratamento:</label>
+    <label th:text="#{formulario.tipoTratamento}">Tipo Tratamento:</label>
     <input type="text" th:field="*{tipoTratamento}"/>
 
-    <button type="submit">Cadastrar</button>
+    <button type="submit" th:text="#{formulario.botaoCadastrar}">Cadastrar</button>
 </form>
 </body>
 </html>
