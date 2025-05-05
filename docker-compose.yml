@@ -8,9 +8,37 @@ services:
       - "8081:8081"
     networks:
       - prevdent-net
+    depends_on:
+      - datadog
     environment:
       - SPRING_RABBITMQ_HOST=rabbitmq
       - FEIGN_CORE_URL=http://prevdent-core:8080
+      - DD_SERVICE=prevdent-produtora
+      - DD_ENV=dev
+      - DD_VERSION=1.0.0
+      - DD_AGENT_HOST=datadog-agent
+      - DD_TRACE_AGENT_PORT=8126
+      - DD_LOGS_INJECTION=true
+
+  datadog:
+    image: datadog/agent:latest
+    container_name: datadog-agent
+    environment:
+      - DD_API_KEY=fef011710a3fe9e7eb5e395446112c37
+      - DD_SITE=us5.datadoghq.com
+      - DD_APM_ENABLED=true
+      - DD_LOGS_ENABLED=true
+      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
+      - DD_CONTAINER_LOGS=true
+      - DD_DOGSTATSD_PORT=8125
+    ports:
+      - "8126:8126"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+    networks:
+      - prevdent-net
 
 networks:
   prevdent-net:
