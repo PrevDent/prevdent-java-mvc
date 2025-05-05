@@ -1,0 +1,55 @@
+<!-- templates/consultas.html -->
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Consultas</title>
+    <link rel="stylesheet" th:href="@{/styleconsulta.css}">
+</head>
+<body>
+
+<div class="navbar">
+
+    <h1>
+        <a th:href="@{/usuario/home}" style="color: #1976d2; text-decoration: none;">
+            PrevDent
+        </a>
+    </h1>
+
+    <div class="menu-links">
+        <a class="btn" th:href="@{/usuario/consultas}" th:text="#{menu.verConsultas}">Ver Consultas</a>
+        <a class="btn" th:href="@{/usuario/consulta/formulario}" th:text="#{menu.cadastrarConsulta}">Cadastrar Consulta</a>
+        <a class="btn" th:href="@{/usuario/logout}" th:text="#{menu.sair}">Sair</a>
+    </div>
+</div>
+
+
+<div class="container mt-4">
+    <h2 th:text="#{titulo.listaConsultas}">Lista de Consultas</h2>
+    <div class="table-responsive">
+        <table border="1" class="table">
+            <thead>
+            <tr>
+                <th th:text="#{tabela.paciente}">Paciente</th>
+                <th th:text="#{tabela.cpfPaciente}">CPF Paciente</th>
+                <th th:text="#{tabela.dentista}">Dentista</th>
+                <th th:text="#{tabela.cro}">CRO</th>
+                <th th:text="#{tabela.dataConsulta}">Data</th>
+                <th th:text="#{tabela.tipoTratamento}">Tipo de Tratamento</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="consulta : ${consultas}">
+                <td th:text="${consulta.paciente.nome}"></td>
+                <td th:text="${consulta.paciente.cpf}"></td>
+                <td th:text="${consulta.dentista.nome}"></td>
+                <td th:text="${consulta.dentista.documento}"></td>
+                <td th:text="${#dates.format(consulta.data, 'dd/MM/yyyy HH:mm')}"></td>
+                <td th:text="${consulta.tipoTratamento}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

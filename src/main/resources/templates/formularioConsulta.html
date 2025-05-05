@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>formulario</title>
+    <link rel="stylesheet" th:href="@{/formulario.css}">
+
+</head>
+<body>
+<div class="navbar">
+
+    <h1>
+        <a th:href="@{/usuario/home}" style="color: #1976d2; text-decoration: none;">
+            PrevDent
+        </a>
+    </h1>
+
+    <div class="menu-links">
+        <a class="btn" th:href="@{/usuario/consultas}" th:text="#{menu.verConsultas}">📋 Ver Consultas</a>
+        <a class="btn" th:href="@{/usuario/consulta/formulario}" th:text="#{menu.cadastrarConsulta}">➕ Cadastrar Consulta</a>
+        <a class="btn" th:href="@{/usuario/logout}" th:text="#{menu.sair}">Sair</a>
+    </div>
+</div>
+
+<div th:if="${mensagemErro}" style="color: red; margin-bottom: 10px;">
+    <p th:text="${mensagemErro}"></p>
+</div>
+
+<form th:action="@{/usuario/consulta/salvar}" th:object="${consulta}" method="post">
+    <label th:text="#{formulario.cpfPaciente}">CPF Paciente:</label>
+    <input type="text" th:field="*{paciente.cpf}"/>
+
+    <label th:text="#{formulario.documentoDentista}">Documento Dentista:</label>
+    <input type="text" th:field="*{dentista.documento}"/>
+
+    <label th:text="#{formulario.dataConsulta}">Data:</label>
+    <div class="input-data-wrapper">
+        <input type="datetime-local" th:field="*{data}" step="1"/>
+    </div>
+
+    <label th:text="#{formulario.tipoTratamento}">Tipo Tratamento:</label>
+    <input type="text" th:field="*{tipoTratamento}"/>
+
+    <button type="submit" th:text="#{formulario.botaoCadastrar}">Cadastrar</button>
+</form>
+</body>
+</html>

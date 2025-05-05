@@ -2,36 +2,24 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Consultas</title>
+    <title>Home - PrevDent</title>
     <link rel="stylesheet" th:href="@{/stylehome.css}">
 </head>
 <body>
-<div class="container  mt-4">
-    <h2>Lista de Consultas</h2>
-        <div class="table-responsive">
-            <table border="1" class="table">
-                <thead>
-                    <tr>
-                        <th>Paciente</th>
-                        <th>CPF Paciente</th>
-                        <th>Dentista</th>
-                        <th>CRO</th>
-                        <th>Data</th>
-                        <th>Tipo de Tratamento</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="consulta : ${consultas}">
-                        <td th:text="${consulta.paciente.nome}"></td>
-                        <td th:text="${consulta.paciente.cpf}"></td>
-                        <td th:text="${consulta.dentista.nome}"></td>
-                        <td th:text="${consulta.dentista.documento}"></td>
-                        <td th:text="${consulta.data}"></td>
-                        <td th:text="${consulta.tipoTratamento}"></td>
-                    </tr>
-                </tbody>
-            </table>
-         </div>
+
+<!-- Navbar -->
+<div class="navbar">
+    <h1>PrevDent</h1>
+    <a class="btn" th:href="@{/usuario/logout}" th:text="#{menu.sair}">Sair</a>
 </div>
+
+<!-- Menu Central -->
+<div class="menu">
+    <h2 th:text="#{titulo.home}">Bem-vindo(a)</h2>
+    <a class="btn" th:href="@{/usuario/consultas}" th:text="#{menu.verConsultas}">Ver Consultas</a>
+    <a class="btn" th:href="@{/usuario/consulta/formulario}" th:text="#{menu.cadastrarConsulta}">Cadastrar Consulta</a>
+</div>
+
 </body>
 </html>
+

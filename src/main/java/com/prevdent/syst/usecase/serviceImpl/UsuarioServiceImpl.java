@@ -7,6 +7,7 @@ import com.prevdent.syst.infra.security.SecurityConfiguration;
 import com.prevdent.syst.infra.security.TokenService;
 import com.prevdent.syst.usecase.ports.out.UsuarioPortOut;
 import com.prevdent.syst.usecase.service.UsuarioService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 

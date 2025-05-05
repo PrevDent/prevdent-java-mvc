@@ -14,6 +14,13 @@ spring:
       enabled: true
       path: /h2-console
 
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:localhost}
+    port: 5672
+    username: guest
+    password: guest
+
+
 api:
   security:
     jwt:
@@ -26,3 +33,26 @@ api:
 
 server:
   port: 8081
+
+management:
+  tracing:
+    enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  datadog:
+    metrics:
+      export:
+        enabled: true
+        apiKey: fef011710a3fe9e7eb5e395446112c37
+        step: 30s
+
+
+
+
+
+
