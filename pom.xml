@@ -101,10 +101,23 @@
 			<artifactId>logback-core</artifactId>
 			<version>1.5.18</version>
 		</dependency>
+
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.5.18</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>janino</artifactId>
+			<version>3.1.10</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>7.3</version>
 		</dependency>
 
 		<dependency>
@@ -116,6 +129,31 @@
 			<artifactId>spring-rabbit-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-datadog</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.datadoghq</groupId>
+			<artifactId>dd-trace-api</artifactId>
+			<version>1.24.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.datadoghq</groupId>
+			<artifactId>dd-java-agent</artifactId>
+			<version>1.26.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+
 
 	</dependencies>
 
