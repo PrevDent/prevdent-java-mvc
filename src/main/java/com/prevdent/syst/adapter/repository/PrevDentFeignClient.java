@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
+
 @FeignClient(name = "prevdentFeign", url = "${FEIGN_CORE_URL}/consulta")
 public interface PrevDentFeignClient {
 
