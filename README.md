@@ -24,22 +24,24 @@ O **PrevDent** é um sistema web que facilita o gerenciamento de consultas odont
 
 ---
 
-## 🛠 Tecnologias Utilizadas
-
 ### 🔹 Back-End  
 - Java 17  
 
 - Spring MVC  
 - Spring Security (JWT)  
 - Spring Data JPA  
+- Spring Actuator  
+- Spring AI  
+- Spring Internationalization (i18n)  
 - Thymeleaf  
 
 ### 🔹 Front-End  
 - HTML5 + Thymeleaf  
-- CSS3 
+- CSS3  
 
 ### 🔹 Infraestrutura  
 - OpenFeign (para integração com APIs externas)  
+- RabbitMQ (mensageria)  
 
 ---
 
