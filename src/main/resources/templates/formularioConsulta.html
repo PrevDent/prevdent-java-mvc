@@ -2,46 +2,115 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>formulario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Consulta - PrevDent</title>
     <link rel="stylesheet" th:href="@{/formulario.css}">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<div class="navbar">
 
-    <h1>
-        <a th:href="@{/usuario/home}" style="color: #1976d2; text-decoration: none;">
-            PrevDent
+<header class="navbar">
+    <div class="navbar-brand">
+        <a th:href="@{/usuario/home}" class="logo-link">
+            <i class="fas fa-tooth logo-icon"></i>
+            <h1>PrevDent</h1>
         </a>
-    </h1>
-
-    <div class="menu-links">
-        <a class="btn" th:href="@{/usuario/consultas}" th:text="#{menu.verConsultas}">📋 Ver Consultas</a>
-        <a class="btn" th:href="@{/usuario/consulta/formulario}" th:text="#{menu.cadastrarConsulta}">➕ Cadastrar Consulta</a>
-        <a class="btn" th:href="@{/usuario/logout}" th:text="#{menu.sair}">Sair</a>
     </div>
-</div>
+    <nav class="navbar-actions">
+        <a class="nav-link" th:href="@{/usuario/home}">
+            <i class="fas fa-home"></i>
+            <span>Início</span>
+        </a>
+        <a class="nav-link" th:href="@{/usuario/consultas}">
+            <i class="fas fa-calendar-alt"></i>
+            <span th:text="#{menu.verConsultas}">Consultas</span>
+        </a>
+        <a class="nav-link active" th:href="@{/usuario/consulta/formulario}">
+            <i class="fas fa-calendar-plus"></i>
+            <span th:text="#{menu.cadastrarConsulta}">Agendar</span>
+        </a>
+        <a class="nav-link" th:href="@{/usuario/chat}">
+            <i class="fas fa-robot"></i>
+            <span>chat</span>
+        </a>
+        <a class="nav-link" th:href="@{/usuario/logout}">
+            <i class="fas fa-sign-out-alt"></i>
+            <span th:text="#{menu.sair}">Sair</span>
+        </a>
+    </nav>
+</header>
 
-<div th:if="${mensagemErro}" style="color: red; margin-bottom: 10px;">
-    <p th:text="${mensagemErro}"></p>
-</div>
 
-<form th:action="@{/usuario/consulta/salvar}" th:object="${consulta}" method="post">
-    <label th:text="#{formulario.cpfPaciente}">CPF Paciente:</label>
-    <input type="text" th:field="*{paciente.cpf}"/>
+<main class="form-container">
+    <div class="form-card">
+        <div class="form-header">
+            <h2><i class="fas fa-calendar-plus"></i> Agendar Nova Consulta</h2>
+            <p>Preencha os dados abaixo para agendar uma consulta</p>
+        </div>
 
-    <label th:text="#{formulario.documentoDentista}">Documento Dentista:</label>
-    <input type="text" th:field="*{dentista.documento}"/>
 
-    <label th:text="#{formulario.dataConsulta}">Data:</label>
-    <div class="input-data-wrapper">
-        <input type="datetime-local" th:field="*{data}" step="1"/>
+        <div th:if="${mensagemErro}" class="alert error">
+            <i class="fas fa-exclamation-circle"></i>
+            <span th:text="${mensagemErro}"></span>
+        </div>
+
+
+        <form th:action="@{/usuario/consulta/salvar}" th:object="${consulta}" method="post">
+            <div class="form-group">
+                <label for="cpfPaciente" th:text="#{formulario.cpfPaciente}">
+                    <i class="fas fa-user"></i> CPF do Paciente
+                </label>
+                <div class="input-with-icon">
+                    <input type="text" id="cpfPaciente" th:field="*{paciente.cpf}"
+                           placeholder="000.000.000-00" required
+                           oninput="formatarCPF(this)">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="docDentista" th:text="#{formulario.documentoDentista}">
+                    <i class="fas fa-user-md"></i> Documento do Dentista
+                </label>
+                <input type="text" id="docDentista" th:field="*{dentista.documento}"
+                       placeholder="CRM/CRO" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dataConsulta" th:text="#{formulario.dataConsulta}">
+                    <i class="fas fa-calendar-day"></i> Data e Hora
+                </label>
+                <div class="input-with-icon">
+                    <input type="datetime-local" id="dataConsulta" th:field="*{data}"
+                           step="1800" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="tipoTratamento" th:text="#{formulario.tipoTratamento}">
+                    <i class="fas fa-teeth-open"></i> Tipo de Tratamento
+                </label>
+                <select id="tipoTratamento" th:field="*{tipoTratamento}" required>
+                    <option value="" disabled selected>Selecione um tratamento</option>
+                    <option value="Limpeza">Limpeza</option>
+                    <option value="Clareamento">Clareamento</option>
+                    <option value="Restauração">Restauração</option>
+                    <option value="Extração">Extração</option>
+                    <option value="Ortodontia">Ortodontia</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-calendar-check"></i>
+                    <span th:text="#{formulario.botaoCadastrar}">Agendar Consulta</span>
+                </button>
+            </div>
+        </form>
     </div>
+</main>
 
-    <label th:text="#{formulario.tipoTratamento}">Tipo Tratamento:</label>
-    <input type="text" th:field="*{tipoTratamento}"/>
-
-    <button type="submit" th:text="#{formulario.botaoCadastrar}">Cadastrar</button>
-</form>
+<script th:src="@{/js/formulario.js}"></script>
 </body>
 </html>
