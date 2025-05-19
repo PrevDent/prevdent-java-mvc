@@ -2,24 +2,58 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - PrevDent</title>
     <link rel="stylesheet" th:href="@{/stylehome.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<!-- Navbar -->
-<div class="navbar">
-    <h1>PrevDent</h1>
-    <a class="btn" th:href="@{/usuario/logout}" th:text="#{menu.sair}">Sair</a>
-</div>
+<header class="navbar">
+    <div class="navbar-brand">
+        <i class="fas fa-tooth logo-icon"></i>
+        <h1>PrevDent</h1>
+    </div>
+    <nav class="navbar-actions">
+        <a class="btn-logout" th:href="@{/usuario/logout}">
+            <i class="fas fa-sign-out-alt"></i>
+            <span th:text="#{menu.sair}">Sair</span>
+        </a>
+    </nav>
+</header>
 
-<!-- Menu Central -->
-<div class="menu">
-    <h2 th:text="#{titulo.home}">Bem-vindo(a)</h2>
-    <a class="btn" th:href="@{/usuario/consultas}" th:text="#{menu.verConsultas}">Ver Consultas</a>
-    <a class="btn" th:href="@{/usuario/consulta/formulario}" th:text="#{menu.cadastrarConsulta}">Cadastrar Consulta</a>
-</div>
+<main class="dashboard-container">
+    <section class="welcome-section">
+        <h2 th:text="#{titulo.home}">Bem-vindo(a) de volta</h2>
+        <p>Gerencie suas consultas odontológicas de forma simples e eficiente</p>
+    </section>
 
+    <section class="actions-grid">
+        <a class="action-card" th:href="@{/usuario/consultas}">
+            <div class="card-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3 th:text="#{menu.verConsultas}">Ver Consultas</h3>
+            <p>Visualize e gerencie todas as suas consultas agendadas</p>
+        </a>
+
+        <a class="action-card" th:href="@{/usuario/consulta/formulario}">
+            <div class="card-icon">
+                <i class="fas fa-calendar-plus"></i>
+            </div>
+            <h3 th:text="#{menu.cadastrarConsulta}">Agendar Consulta</h3>
+            <p>Marque uma nova consulta com seu dentista</p>
+        </a>
+
+        <a class="action-card" th:href="@{/usuario/chat}">
+            <div class="card-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h3>Assistente IA</h3>
+            <p>Converse com nosso assistente virtual para tirar dúvidas e obter ajuda</p>
+        </a>
+    </section>
+</main>
 </body>
 </html>
-
