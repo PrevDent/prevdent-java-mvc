@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente Odontológico - PrevDent</title>
+    <link rel="stylesheet" th:href="@{/chat.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="navbar-brand">
+        <a th:href="@{/usuario/home}" class="logo-link">
+            <i class="fas fa-tooth logo-icon"></i>
+            <h1>PrevDent</h1>
+        </a>
+    </div>
+    <nav class="navbar-actions">
+        <a class="nav-link" th:href="@{/usuario/home}">
+            <i class="fas fa-home"></i>
+            <span>Início</span>
+        </a>
+        <a class="nav-link" th:href="@{/usuario/consultas}">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Consultas</span>
+        </a>
+        <a class="nav-link" th:href="@{/usuario/consulta/formulario}">
+            <i class="fas fa-calendar-plus"></i>
+            <span>Agendar</span>
+        </a>
+        <a class="nav-link active" th:href="@{/chat}">
+            <i class="fas fa-robot"></i>
+            <span>Assistente IA</span>
+        </a>
+        <a class="nav-link" th:href="@{/usuario/logout}">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Sair</span>
+        </a>
+    </nav>
+</header>
+
+<main class="chat-container">
+    <div class="chat-header">
+        <h2><i class="fas fa-robot"></i> Assistente Odontológico IA</h2>
+        <p>Como posso ajudar você hoje? Pergunte sobre saúde bucal, tratamentos ou agendamentos.</p>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+
+        <div th:each="mensagem : ${mensagens}" class="message">
+            <div class="message-user">
+                <div class="avatar user">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-sender">Você</div>
+                    <div class="message-text" th:text="${mensagem.pergunta()}"></div>
+                </div>
+            </div>
+            <div class="message-ia">
+                <div class="avatar ia">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-sender">Assistente PrevDent</div>
+                    <div class="message-text" th:text="${mensagem.resposta()}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="loading-indicator" id="loadingIndicator">
+            <div class="message-ia">
+                <div class="avatar ia">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-sender">Assistente PrevDent</div>
+                    <div class="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form th:action="@{/usuario/chat}" method="post" th:object="${perguntaRequest}" class="chat-input">
+        <div class="input-group">
+            <input type="text" th:field="*{pergunta}" placeholder="Digite sua pergunta sobre saúde bucal..." required>
+            <button type="submit" class="btn-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+        <div class="quick-questions">
+            <span>Perguntas rápidas:</span>
+            <button type="button" class="quick-btn" onclick="setQuestion('Como escovar os dentes corretamente?')">Escovação</button>
+            <button type="button" class="quick-btn" onclick="setQuestion('Quais alimentos prejudicam os dentes?')">Alimentos</button>
+            <button type="button" class="quick-btn" onclick="setQuestion('qual é minha proxima consulta?')">Agendamento</button>
+        </div>
+    </form>
+</main>
+
+<script th:src="@{/js/chat.js}"></script>
+</body>
+</html>

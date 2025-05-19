@@ -1,55 +1,105 @@
-<!-- templates/consultas.html -->
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Consultas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Consultas - PrevDent</title>
     <link rel="stylesheet" th:href="@{/styleconsulta.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<div class="navbar">
-
-    <h1>
-        <a th:href="@{/usuario/home}" style="color: #1976d2; text-decoration: none;">
-            PrevDent
+<header class="navbar">
+    <div class="navbar-brand">
+        <a th:href="@{/usuario/home}" class="logo-link">
+            <i class="fas fa-tooth logo-icon"></i>
+            <h1>PrevDent</h1>
         </a>
-    </h1>
-
-    <div class="menu-links">
-        <a class="btn" th:href="@{/usuario/consultas}" th:text="#{menu.verConsultas}">Ver Consultas</a>
-        <a class="btn" th:href="@{/usuario/consulta/formulario}" th:text="#{menu.cadastrarConsulta}">Cadastrar Consulta</a>
-        <a class="btn" th:href="@{/usuario/logout}" th:text="#{menu.sair}">Sair</a>
     </div>
-</div>
+    <nav class="navbar-actions">
+        <a class="nav-link" th:href="@{/usuario/home}">
+            <i class="fas fa-home"></i>
+            <span>Início</span>
+        </a>
+        <a class="nav-link active" th:href="@{/usuario/consultas}">
+            <i class="fas fa-calendar-alt"></i>
+            <span th:text="#{menu.verConsultas}">Consultas</span>
+        </a>
+        <a class="nav-link" th:href="@{/usuario/consulta/formulario}">
+            <i class="fas fa-calendar-plus"></i>
+            <span th:text="#{menu.cadastrarConsulta}">Agendar</span>
+        </a>
+        <a class="nav-link" th:href="@{/usuario/chat}">
+            <i class="fas fa-robot"></i>
+            <span>chat</span>
+        </a>
+        <a class="nav-link" th:href="@{/usuario/logout}">
+            <i class="fas fa-sign-out-alt"></i>
+            <span th:text="#{menu.sair}">Sair</span>
+        </a>
+    </nav>
+</header>
 
 
-<div class="container mt-4">
-    <h2 th:text="#{titulo.listaConsultas}">Lista de Consultas</h2>
-    <div class="table-responsive">
-        <table border="1" class="table">
+<main class="consultas-container">
+    <div class="consultas-header">
+        <h2><i class="fas fa-calendar-check"></i> <span th:text="#{titulo.listaConsultas}">Minhas Consultas</span></h2>
+        <div class="consultas-actions">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar consulta...">
+            </div>
+            <a th:href="@{/usuario/consulta/formulario}" class="btn-primary">
+                <i class="fas fa-plus"></i>
+                <span th:text="#{menu.cadastrarConsulta}">Nova Consulta</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="consultas-table">
+        <table>
             <thead>
             <tr>
                 <th th:text="#{tabela.paciente}">Paciente</th>
-                <th th:text="#{tabela.cpfPaciente}">CPF Paciente</th>
+                <th th:text="#{tabela.cpfPaciente}">CPF</th>
                 <th th:text="#{tabela.dentista}">Dentista</th>
                 <th th:text="#{tabela.cro}">CRO</th>
-                <th th:text="#{tabela.dataConsulta}">Data</th>
-                <th th:text="#{tabela.tipoTratamento}">Tipo de Tratamento</th>
+                <th th:text="#{tabela.dataConsulta}">Data/Hora</th>
+                <th th:text="#{tabela.tipoTratamento}">Tratamento</th>
+                <th>Ações</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="consulta : ${consultas}">
                 <td th:text="${consulta.paciente.nome}"></td>
-                <td th:text="${consulta.paciente.cpf}"></td>
+                <td th:text="${#strings.replace(consulta.paciente.cpf, '(.{3})(.{3})(.{3})(.{2})', '$1.$2.$3-$4')}"></td>
                 <td th:text="${consulta.dentista.nome}"></td>
                 <td th:text="${consulta.dentista.documento}"></td>
                 <td th:text="${#dates.format(consulta.data, 'dd/MM/yyyy HH:mm')}"></td>
-                <td th:text="${consulta.tipoTratamento}"></td>
+                <td>
+                    <span class="treatment-badge" th:text="${consulta.tipoTratamento}"></span>
+                </td>
+                <td class="actions">
+                    <a href="#" class="action-btn edit" title="Editar">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="#" class="action-btn delete" title="Cancelar">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
-</div>
+
+    <div class="pagination">
+        <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+        <span class="page-info">1 de 5</span>
+        <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</main>
+
+<script th:src="@{/js/consultas.js}"></script>
 </body>
 </html>
