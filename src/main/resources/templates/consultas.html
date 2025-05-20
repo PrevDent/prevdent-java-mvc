@@ -24,11 +24,11 @@
         </a>
         <a class="nav-link active" th:href="@{/usuario/consultas}">
             <i class="fas fa-calendar-alt"></i>
-            <span th:text="#{menu.verConsultas}">Consultas</span>
+            <span>Consultas</span>
         </a>
         <a class="nav-link" th:href="@{/usuario/consulta/formulario}">
             <i class="fas fa-calendar-plus"></i>
-            <span th:text="#{menu.cadastrarConsulta}">Agendar</span>
+            <span>Agendar</span>
         </a>
         <a class="nav-link" th:href="@{/usuario/chat}">
             <i class="fas fa-robot"></i>
@@ -36,7 +36,7 @@
         </a>
         <a class="nav-link" th:href="@{/usuario/logout}">
             <i class="fas fa-sign-out-alt"></i>
-            <span th:text="#{menu.sair}">Sair</span>
+            <span>Sair</span>
         </a>
     </nav>
 </header>
@@ -44,7 +44,7 @@
 
 <main class="consultas-container">
     <div class="consultas-header">
-        <h2><i class="fas fa-calendar-check"></i> <span th:text="#{titulo.listaConsultas}">Minhas Consultas</span></h2>
+        <h2><i class="fas fa-calendar-check"></i> <span>Minhas Consultas</span></h2>
         <div class="consultas-actions">
             <div class="search-box">
                 <i class="fas fa-search"></i>
@@ -52,7 +52,7 @@
             </div>
             <a th:href="@{/usuario/consulta/formulario}" class="btn-primary">
                 <i class="fas fa-plus"></i>
-                <span th:text="#{menu.cadastrarConsulta}">Nova Consulta</span>
+                <span>Nova Consulta</span>
             </a>
         </div>
     </div>
@@ -61,12 +61,12 @@
         <table>
             <thead>
             <tr>
-                <th th:text="#{tabela.paciente}">Paciente</th>
-                <th th:text="#{tabela.cpfPaciente}">CPF</th>
-                <th th:text="#{tabela.dentista}">Dentista</th>
-                <th th:text="#{tabela.cro}">CRO</th>
-                <th th:text="#{tabela.dataConsulta}">Data/Hora</th>
-                <th th:text="#{tabela.tipoTratamento}">Tratamento</th>
+                <th>Paciente</th>
+                <th>CPF</th>
+                <th>Dentista</th>
+                <th>CRO</th>
+                <th>Data/Hora</th>
+                <th>Tratamento</th>
                 <th>Ações</th>
             </tr>
             </thead>

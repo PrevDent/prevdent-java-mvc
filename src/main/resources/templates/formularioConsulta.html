@@ -24,11 +24,11 @@
         </a>
         <a class="nav-link" th:href="@{/usuario/consultas}">
             <i class="fas fa-calendar-alt"></i>
-            <span th:text="#{menu.verConsultas}">Consultas</span>
+            <span>Consultas</span>
         </a>
         <a class="nav-link active" th:href="@{/usuario/consulta/formulario}">
             <i class="fas fa-calendar-plus"></i>
-            <span th:text="#{menu.cadastrarConsulta}">Agendar</span>
+            <span>Agendar</span>
         </a>
         <a class="nav-link" th:href="@{/usuario/chat}">
             <i class="fas fa-robot"></i>
@@ -36,7 +36,7 @@
         </a>
         <a class="nav-link" th:href="@{/usuario/logout}">
             <i class="fas fa-sign-out-alt"></i>
-            <span th:text="#{menu.sair}">Sair</span>
+            <span>Sair</span>
         </a>
     </nav>
 </header>
@@ -58,7 +58,7 @@
 
         <form th:action="@{/usuario/consulta/salvar}" th:object="${consulta}" method="post">
             <div class="form-group">
-                <label for="cpfPaciente" th:text="#{formulario.cpfPaciente}">
+                <label for="cpfPaciente">
                     <i class="fas fa-user"></i> CPF do Paciente
                 </label>
                 <div class="input-with-icon">
@@ -69,7 +69,7 @@
             </div>
 
             <div class="form-group">
-                <label for="docDentista" th:text="#{formulario.documentoDentista}">
+                <label for="docDentista">
                     <i class="fas fa-user-md"></i> Documento do Dentista
                 </label>
                 <input type="text" id="docDentista" th:field="*{dentista.documento}"
@@ -77,7 +77,7 @@
             </div>
 
             <div class="form-group">
-                <label for="dataConsulta" th:text="#{formulario.dataConsulta}">
+                <label for="dataConsulta">
                     <i class="fas fa-calendar-day"></i> Data e Hora
                 </label>
                 <div class="input-with-icon">
@@ -87,7 +87,7 @@
             </div>
 
             <div class="form-group">
-                <label for="tipoTratamento" th:text="#{formulario.tipoTratamento}">
+                <label for="tipoTratamento">
                     <i class="fas fa-teeth-open"></i> Tipo de Tratamento
                 </label>
                 <select id="tipoTratamento" th:field="*{tipoTratamento}" required>
@@ -104,7 +104,7 @@
             <div class="form-actions">
                 <button type="submit" class="btn-primary">
                     <i class="fas fa-calendar-check"></i>
-                    <span th:text="#{formulario.botaoCadastrar}">Agendar Consulta</span>
+                    <span>Agendar Consulta</span>
                 </button>
             </div>
         </form>

@@ -154,6 +154,12 @@
 		</dependency>
 
 
+		<!-- Para GeoIP2 (MaxMind) -->
+		<dependency>
+			<groupId>com.maxmind.geoip2</groupId>
+			<artifactId>geoip2</artifactId>
+			<version>4.0.0</version>
+		</dependency>
 
 	</dependencies>
 
