@@ -48,7 +48,7 @@ management:
     metrics:
       export:
         enabled: true
-        apiKey: fef011710a3fe9e7eb5e395446112c37
+        apiKey: 4f9a6471c8543cd56eddd10a6157dfc2
         step: 30s
 
 
